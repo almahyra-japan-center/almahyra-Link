@@ -3,50 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AlMahyra Japan Center - Bayar Mudah</title>
+<title>ALMAHYRA JAPAN CENTER - HIDUP</title>
 <style>
-body{font-family:sans-serif;background:#f5f7fb;margin:0;padding:20px;}
-.card{max-width:400px;margin:auto;background:white;border-radius:16px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;}
-.logo{width:80px;border-radius:50%;margin-bottom:10px;}
-h1{font-size:22px;color:#b91c1c;margin:10px 0;}
-.program{text-align:left;background:#f9fafb;border:2px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;}
-.program.active{border-color:#dc2626;background:#fef2f2;}
-.addon{text-align:left;background:#fffbeb;border:2px dashed #f59e0b;border-radius:12px;padding:12px;margin:12px 0;}
-.rincian{background:#f3f4f6;border-radius:10px;padding:12px;margin:12px 0;text-align:left;font-size:14px;}
-.btn{display:block;width:100%;padding:14px;margin:10px 0;border-radius:10px;color:white;text-decoration:none;font-weight:bold;border:none;cursor:pointer;font-size:16px;}
-.btn-merah{background:#dc2626;}
-.btn-hijau{background:#16a34a;}
-.btn-biru{background:#2563eb;}
-.qris-box{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99;overflow:auto;}
-.qris-card{background:white;max-width:380px;margin:20px auto;padding:20px;border-radius:16px;text-align:center;}
-.qris-card img{width:100%;border-radius:12px;}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fef2f2 0%,#fff 50%,#fef2f2 100%);min-height:100vh;padding:15px;overflow-x:hidden;position:relative}
+.sakura{position:fixed;top:-10px;pointer-events:none;animation:fall linear infinite;z-index:1}
+@keyframes fall{0%{transform:translateY(-10vh) translateX(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) translateX(100px) rotate(720deg);opacity:0}}
+.container{max-width:400px;margin:0 auto;position:relative;z-index:2}
+.card{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:24px;padding:22px;box-shadow:0 20px 40px rgba(220,38,38,0.15),0 0 0 1px rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.8);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,#dc2626,transparent);animation:shine 3s infinite}
+@keyframes shine{0%{left:-100%}100%{left:100%}}
+.logo-wrap{width:90px;height:90px;margin:0 auto 12px;position:relative}
+.logo-wrap::after{content:'';position:absolute;inset:-4px;background:linear-gradient(45deg,#dc2626,#f59e0b,#dc2626);border-radius:50%;animation:rotate 3s linear infinite;z-index:-1}
+@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.logo{width:90px;height:90px;border-radius:50%;object-fit:cover;animation:float 3s ease-in-out infinite;box-shadow:0 10px 20px rgba(0,0,0,0.1)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+h1{background:linear-gradient(135deg,#dc2626,#991b1b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:24px;font-weight:800;line-height:1.2;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px rgba(220,38,38,0.3)}to{text-shadow:0 0 20px rgba(220,38,38,0.6)}}
+.sub{color:#6b7280;font-size:13px;margin:8px 0 16px;line-height:1.4}
+.prog{background:rgba(249,250,251,0.8);border:2px solid #e5e7eb;border-radius:16px;padding:14px;margin:10px 0;cursor:pointer;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;text-align:left}
+.prog:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.08);border-color:#fca5a5}
+.prog.active{border-color:#dc2626;background:linear-gradient(135deg,#fef2f2,#fff);box-shadow:0 0 0 3px rgba(220,38,38,0.1),0 10px 25px rgba(220,38,38,0.15);transform:scale(1.02)}
+.prog.active::after{content:'✓';position:absolute;top:12px;right:12px;width:24px;height:24px;background:#dc2626;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;animation:pop 0.4s cubic-bezier(0.68,-0.55,0.265,1.55)}
+@keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.badge{display:inline-block;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#78350f;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:800;margin-top:6px;animation:pulse-gold 1.5s infinite;box-shadow:0 2px 8px rgba(251,191,36,0.4)}
+@keyframes pulse-gold{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.addon{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px dashed #f59e0b;border-radius:16px;padding:14px;margin:14px 0;text-align:left;transition:all 0.3s}
+.addon.checked{border-style:solid;background:linear-gradient(135deg,#fef3c7,#fde68a);transform:scale(1.02)}
+.rincian{background:linear-gradient(135deg,#f3f4f6,#fff);border-radius:14px;padding:14px;margin:14px 0;text-align:left;font-size:13px;border:1px solid #e5e7eb;position:relative;overflow:hidden}
+.rincian::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#dc2626,#f59e0b)}
+.total-big{font-size:18px;font-weight:800;color:#dc2626}
+.btn{width:100%;padding:16px;border-radius:14px;border:none;font-weight:800;font-size:15px;cursor:pointer;position:relative;overflow:hidden;transition:all 0.3s;margin:10px 0;display:block;text-align:center}
+.btn-merah{background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;box-shadow:0 8px 20px rgba(220,38,38,0.3);animation:btn-pulse 2s infinite}
+.btn-merah::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:btn-shine 2.5s infinite}
+@keyframes btn-shine{0%{left:-100%}100%{left:100%}}
+@keyframes btn-pulse{0%,100%{box-shadow:0 8px 20px rgba(220,38,38,0.3)}50%{box-shadow:0 12px 30px rgba(220,38,38,0.5)}}
+.btn-hijau{background:linear-gradient(135deg,#16a34a,#15803d);color:white;box-shadow:0 6px 15px rgba(22,163,74,0.3)}
+.btn:active{transform:scale(0.98)}
+.qris-box{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99;overflow:auto;padding:15px}
+.qris-card{background:white;border-radius:24px;padding:22px;max-width:380px;margin:20px auto;text-align:center;animation:slideUp 0.4s cubic-bezier(0.68,-0.55,0.265,1.55)}
+@keyframes slideUp{from{transform:translateY(100px);opacity:0}to{transform:translateY(0);opacity:1}}
+.timer{color:#dc2626;font-weight:800;font-size:18px;animation:timer-blink 1s infinite}
+@keyframes timer-blink{0%,100%{opacity:1}50%{opacity:0.6}}
+.icon-bounce{display:inline-block;animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 </style>
 </head>
 <body>
+<div class="container">
 <div class="card">
-<img src="logo.jpg" class="logo">
-<h1>ALMAHYRA JAPAN CENTER</h1>
-<p>Pusat Pelatihan & Penempatan Kerja ke Jepang<br>Karangsari, Bulakamba, Brebes</p>
-<h3 style="text-align:left;margin-top:20px;">Pilih Program:</h3>
-<div class="program active" onclick="pilih(this,'Yuttari Course',500000)"><b>Yuttari Course - Rp 500.000 DP</b><br><span style="background:gold;padding:2px 6px;border-radius:6px;font-size:11px;">IKLAN 500RB = INI PALING POPULER</span></div>
-<div class="program" onclick="pilih(this,'O Tameshi Course',0)"><b>O Tameshi Course - Gratis</b></div>
-<div class="program" onclick="pilih(this,'Tanki Course',1500000)"><b>Tanki Course - Rp 1.500.000 DP 50%</b></div>
-<div class="program" onclick="pilih(this,'Ikusei Shuro',2000000)"><b>Ikusei Shuro - Rp 2.000.000</b></div>
-<div class="program" onclick="pilih(this,'Tokutei Ginou',10000000)"><b>Tokutei Ginou - Rp 10.000.000 DP 50%</b></div>
-<div class="addon"><label><input type="checkbox" id="buku" onchange="hitung()"> 📚 Buku + Seragam Resmi - Rp 200.000</label><br><small>Modul N5, Kaos seragam, Buku kanji</small></div>
-<div class="rincian" id="rincian">Program: Yuttari Course<br>Buku: Rp 0<br><b>Total: Rp 500.000</b></div>
-<button class="btn btn-merah" onclick="bayar()">💳 BAYAR SEKARANG - QRIS</button>
-<button class="btn btn-hijau" onclick="chat()">💬 CHAT ADMIN VIA WA</button>
+<div class="logo-wrap"><img src="logo.jpg" class="logo" alt="logo"></div>
+<h1>ALMAHYRA<br>JAPAN CENTER</h1>
+<div class="sub">Pusat Pelatihan & Penempatan Kerja ke Jepang<br><b>Karangsari - Bulakamba - Brebes</b> 🇯🇵</div>
+<div class="prog active" onclick="pilih(this,'Yuttari Course',500000)"><b>💰 Yuttari Course - Rp 500.000 DP</b><br><span class="badge">🔥 IKLAN 500RB = INI PALING POPULER</span></div>
+<div class="prog" onclick="pilih(this,'O Tameshi Course',0)"><b>🎌 O Tameshi Course - Gratis</b></div>
+<div class="prog" onclick="pilih(this,'Tanki Course',1500000)"><b>⚡ Tanki Course - Rp 1.500.000</b></div>
+<div class="prog" onclick="pilih(this,'Ikusei Shuro',2000000)"><b>🌸 Ikusei Shuro - Rp 2.000.000</b></div>
+<div class="prog" onclick="pilih(this,'Tokutei Ginou',10000000)"><b>🚀 Tokutei Ginou - Rp 10.000.000</b></div>
+<div class="addon" id="addonBox"><label style="cursor:pointer;display:flex;gap:8px"><input type="checkbox" id="buku" onchange="hitung()" style="width:18px;height:18px"><span><b>📚 Buku + Seragam - Rp 200.000</b><br><small>Modul N5, Kaos seragam, Buku kanji</small></span></label></div>
+<div class="rincian" id="rincian"><div style="display:flex;justify-content:space-between"><span>Program:</span><span id="rProg">Yuttari Course</span></div><div style="display:flex;justify-content:space-between"><span>Buku:</span><span id="rBuku">Rp 0</span></div><hr style="margin:8px 0;border:none;border-top:1px dashed #d1d5db"><div style="display:flex;justify-content:space-between"><b>Total:</b><span class="total-big" id="rTotal">Rp 500.000</span></div></div>
+<button class="btn btn-merah" onclick="bayar()"><span class="icon-bounce">💳</span> BAYAR SEKARANG - QRIS</button>
+<button class="btn btn-hijau" onclick="chat()">💬 TANYA ADMIN VIA WA</button>
+<div style="background:#fffbeb;border-radius:12px;padding:12px;margin-top:12px;text-align:left;font-size:11px;border:1px solid #fde68a">✅ <b>Cara Bayar:</b> 1.Pilih program 2.Centang buku 200RB 3.Klik BAYAR 4.Scan QRIS DANA/OVO/GoPay 5.Klik Sudah Bayar 🎉</div>
 </div>
-<div class="qris-box" id="qrisBox"><div class="qris-card"><h2 id="qrisJudul">Bayar Yuttari Course</h2><p id="qrisTotal"><b>Total: Rp 500.000</b></p><img src="qris.jpg"><p style="font-size:12px;color:#666;">AL MAHYRA JAPAN CENTER - NMID: ID1026602781969 - A01<br>SATU QRIS UNTUK SEMUA</p><p id="timer" style="color:red;font-weight:bold;">10:00</p><button class="btn btn-hijau" onclick="konfirmasi()">✅ Sudah Bayar - Konfirmasi WA</button><button class="btn btn-biru" onclick="tutup()">⬅ Kembali</button></div></div>
+</div>
+<div class="qris-box" id="qrisBox"><div class="qris-card"><h2 id="qrisJudul" style="color:#dc2626">Bayar Yuttari Course</h2><p id="qrisTotal" style="font-weight:800;margin:8px 0">Total: Rp 500.000</p><img src="qris.jpg" style="width:100%;border-radius:16px"><p style="font-size:10px;color:#6b7280;margin:10px 0">AL MAHYRA JAPAN CENTER - NMID: ID1026602781969 - A01<br>SATU QRIS UNTUK SEMUA</p><div class="timer" id="timer">10:00</div><button class="btn btn-hijau" onclick="konfirmasi()">✅ Sudah Bayar - Konfirmasi WA</button><button class="btn" style="background:#e5e7eb;color:#374151" onclick="tutup()">⬅ Kembali</button></div></div>
 <script>
-let prog='Yuttari Course'; let harga=500000;
-function pilih(el,nama,h){document.querySelectorAll('.program').forEach(p=>p.classList.remove('active'));el.classList.add('active');prog=nama;harga=h;hitung();}
-function hitung(){let buku=document.getElementById('buku').checked?200000:0;let total=harga+buku;document.getElementById('rincian').innerHTML=`Program: ${prog} - Rp ${harga.toLocaleString()}<br>Buku: Rp ${buku.toLocaleString()}<br><b>Total: Rp ${total.toLocaleString()}</b>`;document.getElementById('qrisJudul').innerText=`Bayar ${prog}`;document.getElementById('qrisTotal').innerHTML=`<b>Total: Rp ${total.toLocaleString()}</b>` + (buku?' + Buku Seragam':'');return total;}
-function bayar(){hitung();document.getElementById('qrisBox').style.display='block';let t=600;let iv=setInterval(()=>{t--;let m=Math.floor(t/60);let s=t%60;document.getElementById('timer').innerText=`${m}:${s<10?'0':''}${s}`;if(t<=0){clearInterval(iv);}},1000);}
+let prog='Yuttari Course',harga=500000;
+function createSakura(){for(let i=0;i<8;i++){let s=document.createElement('div');s.className='sakura';s.innerHTML='🌸';s.style.left=Math.random()*100+'vw';s.style.animationDuration=(Math.random()*3+4)+'s';s.style.animationDelay=Math.random()*5+'s';s.style.fontSize=(Math.random()*10+12)+'px';document.body.appendChild(s);}}
+createSakura();
+function pilih(el,nama,h){document.querySelectorAll('.prog').forEach(p=>p.classList.remove('active'));el.classList.add('active');prog=nama;harga=h;hitung();}
+function hitung(){let buku=document.getElementById('buku').checked?200000:0;let total=harga+buku;let addon=document.getElementById('addonBox');if(buku){addon.classList.add('checked')}else{addon.classList.remove('checked')};document.getElementById('rProg').innerText=prog;document.getElementById('rBuku').innerText='Rp '+buku.toLocaleString('id-ID');document.getElementById('rTotal').innerText='Rp '+total.toLocaleString('id-ID');document.getElementById('qrisJudul').innerText='Bayar '+prog;document.getElementById('qrisTotal').innerHTML='<b>Total: Rp '+total.toLocaleString('id-ID')+'</b>'+(buku?' + Buku Seragam':'');return total;}
+function bayar(){hitung();document.getElementById('qrisBox').style.display='block';let t=600;let iv=setInterval(()=>{t--;let m=Math.floor(t/60);let s=t%60;document.getElementById('timer').innerText=m+':'+(s<10?'0':'')+s;if(t<=0)clearInterval(iv);},1000);}
 function tutup(){document.getElementById('qrisBox').style.display='none';}
-function chat(){let buku=document.getElementById('buku').checked?' + Buku Seragam':'';let total=hitung();window.open(`https://wa.me/6287892751860?text=Halo Admin ALMAHYRA, saya mau tanya tentang ${prog}${buku} total Rp ${total}`,'_blank');}
-function konfirmasi(){let buku=document.getElementById('buku').checked?' + Buku Seragam Rp 200.000':'';let total=hitung();window.open(`https://wa.me/6287892751860?text=Halo Admin, saya sudah bayar ${prog}${buku} total Rp ${total}. Ini bukti transfer: `,'_blank');}
+function chat(){let buku=document.getElementById('buku').checked?' + Buku Seragam':'';let total=hitung();window.open('https://wa.me/6287892751860?text=Halo Admin ALMAHYRA, saya mau tanya tentang '+prog+buku+' total Rp '+total,'_blank');}
+function konfirmasi(){let buku=document.getElementById('buku').checked?' + Buku Seragam Rp 200.000':'';let total=hitung();window.open('https://wa.me/6287892751860?text=Halo Admin, saya sudah bayar '+prog+buku+' total Rp '+total+'. Ini bukti: ','_blank');}
 </script>
 </body>
 </html>
